@@ -31,7 +31,8 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dG1 = new System.Windows.Forms.DataGridView();
             this.textBoxNom = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -45,6 +46,8 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.textBoxListe = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dG1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,14 +55,14 @@ namespace WindowsFormsApp1
             // 
             this.dG1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dG1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dG1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dG1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dG1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG1.Location = new System.Drawing.Point(489, 60);
             this.dG1.Name = "dG1";
@@ -170,11 +173,24 @@ namespace WindowsFormsApp1
             this.label5.TabIndex = 12;
             this.label5.Text = "Veuillez saisir le nom de la liste";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(136, 60);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 13;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 641);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxListe);
             this.Controls.Add(this.button3);
@@ -211,6 +227,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxListe;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

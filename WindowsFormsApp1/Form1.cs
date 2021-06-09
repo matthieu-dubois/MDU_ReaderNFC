@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sydesoft.NfcDevice;
 
 namespace WindowsFormsApp1
 {
@@ -17,6 +11,8 @@ namespace WindowsFormsApp1
     {
         private SqlConnection sqlConnection;
         private SqlConnection sqlConnection1;
+
+        private static MyACR122U acr122u = new MyACR122U();
 
         public Form1()
         {
@@ -37,14 +33,25 @@ namespace WindowsFormsApp1
             dG1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dG1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-             
+
+            acr122u.Init(false, 50, 4, 4, 200);
+            acr122u.CardInserted += ReaderNfc;
+
+
+
+        }
+
+        private static void ReaderNfc(PCSC.ICardReader reader)
+        {
+
+            acr122u.ReadId = BitConverter.ToString(acr122u.GetUID(reader)).Replace("-", "");
         }
 
         private void DisplayPersonne()
         {
             try
             {
-                string query = "SELECT * FROM [MiseApplicationLearning].[dbo]. Utilisateurs_Archiv ";
+                string query = "SELECT * FROM  MDU";
 
                 sqlConnection.Open();
 
@@ -76,14 +83,14 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
              
-            string query = "select prenom from Utilisateurs_Archiv where Prenom = @Prenom";
+            string query = "select RFID from mdu where RFID = @RFID";
 
             using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
             {
                 //sqlCommand.Parameters.Add(new SqlParameter("@Prenom", SqlDbType.NChar, 20));
                 //sqlCommand.Parameters["@Prenom"].Value = textBox1.Text;
 
-                sqlCommand.Parameters.AddWithValue("@Prenom", textBoxPrenom.Text);
+                sqlCommand.Parameters.AddWithValue("@RFID",textBox1.Text);
 
                 sqlConnection.Open();
 
@@ -91,29 +98,29 @@ namespace WindowsFormsApp1
 
                 if (rdr.HasRows)
                 {
-                    MessageBox.Show("Déja récuperé");
+                    MessageBox.Show(" ok");
                     sqlConnection.Close();
-                     
-                }
-                else
-                {
-                    string query1 = "insert into Utilisateurs_Archiv values (@Prenom ,@Nom, @Age)";
+
+                    //string query1 = $"insert into MDU (Recupere) values ('oui') where RFID = textBox1.Text";
+                    string query1 = $"update mdu set Recupere = 'oui' where RFID = @RFID";
+
 
                     using (SqlCommand sqlCommand1 = new SqlCommand(query1, sqlConnection1))
                     {
+                        sqlCommand1.Parameters.AddWithValue("@RFID", textBox1.Text);
 
                         sqlConnection1.Open();
 
-                        sqlCommand1.Parameters.AddWithValue("@Prenom", textBoxPrenom.Text);
-                        sqlCommand1.Parameters.AddWithValue("@Nom", textBoxNom.Text);
-                        sqlCommand1.Parameters.AddWithValue( "@Age", textBoxAge.Text);
-                        
                         sqlCommand1.ExecuteScalar();
 
                         sqlConnection1.Close();
 
-                        
                     }
+
+                }
+                else
+                {
+                    MessageBox.Show("l'tilisateur ne figure pas dans la liste");
                 }
             }
 
@@ -129,8 +136,7 @@ namespace WindowsFormsApp1
             using (SqlCommand sqlCommand1 = new SqlCommand(query1, sqlConnection1))
             {
                 sqlConnection1.Open();
- 
-
+                
                 sqlCommand1.ExecuteScalar();
 
                 sqlConnection1.Close();
@@ -168,8 +174,24 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Distribution terminé");
         }
 
-         
+        public class MyACR122U : ACR122U
+        {
+            private string readId;
+            public string ReadId
+            {
+                get { return readId; }
+                set { readId = value; }
+            }
 
+            public MyACR122U()
+            {
 
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox1.Text = acr122u.ReadId;  
+        }
     }
 }

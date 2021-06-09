@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PCSC, Version=5.0.0.0, Culture=neutral, PublicKeyToken=13b76e54a2ee80a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\NFC-ACR122U.1.0.0\lib\PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="Sydesoft.NfcDevice.ACR122U, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\NFC-ACR122U.1.0.0\lib\Sydesoft.NfcDevice.ACR122U.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -67,6 +73,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
