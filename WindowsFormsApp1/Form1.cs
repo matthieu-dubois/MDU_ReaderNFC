@@ -101,8 +101,8 @@ namespace WindowsFormsApp1
                     MessageBox.Show(" ok");
                     sqlConnection.Close();
 
-                    //string query1 = $"insert into MDU (Recupere) values ('oui') where RFID = textBox1.Text";
-                    string query1 = $"update mdu set Recupere = 'oui' where RFID = @RFID";
+                     
+                    string query1 = "update mdu set Recupere = 'oui' where RFID = @RFID";
 
 
                     using (SqlCommand sqlCommand1 = new SqlCommand(query1, sqlConnection1))
@@ -128,6 +128,42 @@ namespace WindowsFormsApp1
             DisplayPersonne();
         }
 
+
+        private void Prendre_pour_other()
+        {
+            string query1 = " update mdu set RecuperePar = 'oui' where RFID = @RFID";
+
+            using (SqlCommand sqlCommand1 = new SqlCommand(query1, sqlConnection1))
+            {
+
+                sqlCommand1.Parameters.AddWithValue("@RFID", textBox1.Text);
+
+                sqlConnection1.Open();
+
+                sqlCommand1.ExecuteScalar();
+
+                sqlConnection1.Close();
+            }
+
+            string query2 = " select RecuperePar from mdu where RecuperePar = 'oui' and RFID = @RFID  ";
+
+            using (SqlCommand sqlCommand1 = new SqlCommand(query1, sqlConnection1))
+            {
+                sqlCommand1.Parameters.AddWithValue("@RFID", textBox1.Text);
+
+                sqlConnection1.Open();
+
+                sqlCommand1.ExecuteScalar();
+
+                sqlConnection1.Close();
+            }
+
+            MessageBox.Show("Le colis à deja été recuperé par une autre personne");
+
+
+        }
+
+            
         //creation d'une table dans la base de donnée
         private void button3_Click(object sender, EventArgs e)
         {
@@ -141,6 +177,8 @@ namespace WindowsFormsApp1
 
                 sqlConnection1.Close();
             }
+
+            
         }
 
         //private void button3_Click(object sender, EventArgs e)
@@ -192,6 +230,12 @@ namespace WindowsFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             textBox1.Text = acr122u.ReadId;  
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+              Prendre_pour_other();  
+              DisplayPersonne();
         }
     }
 }

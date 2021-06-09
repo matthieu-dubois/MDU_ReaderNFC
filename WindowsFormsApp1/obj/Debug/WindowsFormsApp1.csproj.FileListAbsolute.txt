@@ -41,3 +41,16 @@ D:\Bureau\MDU_ReaderNFC-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.cspro
 D:\Bureau\MDU_ReaderNFC-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 D:\Bureau\MDU_ReaderNFC-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Bureau\MDU_ReaderNFC-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\bin\Debug\PCSC.dll
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\bin\Debug\Sydesoft.NfcDevice.ACR122U.dll
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\matth\OneDrive\Documents\MDU_ReaderNFC\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
